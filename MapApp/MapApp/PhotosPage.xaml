@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapApp.PhotosPage"
+             Title="Фотографии">
+    <ContentPage.Content>
+        <Grid Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <CarouselView ItemsSource="{Binding ImagesSources}" IndicatorView="indicatorView" Loop="False">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding }"></Image>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView  Grid.Row="1"
+                       x:Name="indicatorView"
+                       IndicatorsShape="Circle"
+                       IndicatorColor="#DDDDDD"
+                       SelectedIndicatorColor="#00BFA6"
+                       IndicatorSize="15"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+            <!--<ListView ItemsSource="{Binding ImagesSources}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding }"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+            <Button Grid.Row="2" Text="Сделать фото" Command="{Binding TakePhotoCommand}"/>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>
